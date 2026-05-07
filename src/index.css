@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  /* Light Theme - Clean, Minimalist Slate */
+  --bg: #F8FAFC;          /* Slate 50 - Fresh background */
+  --surface: #FFFFFF;     /* Pure white for cards/nav */
+  
+  /* Primary Action Color - Vibrant Indigo */
+  --primary: #4F46E5;     /* Indigo 600 - Trustworthy and professional */
+  --primary-hover: #4338CA;
+  
+  --secondary: #0F172A;   /* Slate 900 - High contrast for text/buttons */
+  --accent: #EEF2FF;      /* Indigo 50 - Subtle highlights */
+
+  --text: #0F172A;        /* Slate 900 */
+  --text-light: #64748B;  /* Slate 500 - For subheadings */
+
+  --border: #E2E8F0;      /* Slate 200 */
+
+  /* Modern Font Stack */
+  --heading-font: "Inter", sans-serif; /* Clean, geometric, and trendy */
+  --body-font: "Inter", sans-serif;
+}
+
+/* In your CSS file */
+.dark {
+  --bg: #020617;
+  --surface: #0F172A;
+  /* Make sure this is a visible color, not dark blue/black */
+  --secondary: #6366F1; 
+  --text: #F8FAFC;
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased; /* Makes fonts look sharper */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
