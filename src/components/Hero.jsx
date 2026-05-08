@@ -1,9 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById("about");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section
       id="home"
@@ -14,7 +21,7 @@ function Hero() {
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/10 blur-[120px] rounded-full"></div>
 
       {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto text-center relative z-10">
+      <div className="max-w-7xl mx-auto text-center relative z-10 pb-20 sm:pb-6">
         
         {/* Subtle Greeting */}
         <motion.div
@@ -83,7 +90,7 @@ function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6"
         >
           <button className="w-full sm:w-auto px-8 py-4 rounded-xl  text-white font-bold flex items-center justify-center gap-2 bg-black transition-all shadow-lg shadow-indigo-200">
             View Projects
@@ -97,7 +104,7 @@ function Hero() {
         </motion.div>
 
         {/* Social Links */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 }}
@@ -115,7 +122,20 @@ function Hero() {
               {social.icon}
             </a>
           ))}
-        </motion.div>
+        </motion.div> */}
+      </div>
+
+      {/* Scroll Down Button */}
+      <div className="pt-10">
+      <motion.button
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+        onClick={scrollToAbout}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 p-3 rounded-full border border-[var(--border)] text-[var(--text-light)] hover:text-indigo-600 hover:border-indigo-600 transition-all duration-300 bg-[var(--surface)]/50 backdrop-blur-md cursor-pointer z-20"
+      >
+        <ChevronDown size={24} />
+      </motion.button>
       </div>
     </section>
   );
