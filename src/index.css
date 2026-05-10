@@ -26,10 +26,11 @@
 .dark {
   --bg: #020617;
   --surface: #0F172A;
-  /* Make sure this is a visible color, not dark blue/black */
   --secondary: #6366F1; 
-  --text: #F8FAFC;
+  --text: #F1F5F9;
+  --text-light: #94A3B8;
   --border: rgba(255, 255, 255, 0.1);
+  --accent: rgba(79, 70, 229, 0.15);
 }
 
 body {
