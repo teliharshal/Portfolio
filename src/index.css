@@ -37,6 +37,25 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--body-font);
-  -webkit-font-smoothing: antialiased; /* Makes fonts look sharper */
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hide scrollbar visually but keep scroll functionality */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Hide default cursor on non-touch devices */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
 }

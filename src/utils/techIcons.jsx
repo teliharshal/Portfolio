@@ -1,5 +1,5 @@
 import {
-  FaReact, FaJava, FaHtml5, FaCss3Alt, FaJs, FaDatabase,
+  FaReact, FaJava, FaHtml5, FaCss3Alt, FaJs, FaDatabase, FaGitAlt, FaGithub,
 } from "react-icons/fa";
 import {
   SiSpringboot, SiMysql, SiPostgresql, SiTailwindcss,
@@ -19,6 +19,8 @@ export const techMap = {
   "HTML":         { icon: FaHtml5,       color: "#E34F26" },
   "CSS":          { icon: FaCss3Alt,     color: "#1572B6" },
   "REST API":     { icon: Code,          color: "#6366F1" },
+  "Git":          { icon: FaGitAlt,      color: "#F05032" },
+  "GitHub":       { icon: FaGithub,      color: "#6e5494" },
 };
 
 /* Pill component — icon + label, theme-aware */

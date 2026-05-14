@@ -25,6 +25,7 @@ export default function Footer() {
 
   return (
     <footer
+      id="contact"
       className="relative bg-[var(--surface)] border-t border-[var(--border)] overflow-hidden"
       style={{ fontFamily: "var(--body-font)" }}
     >

@@ -58,9 +58,9 @@ const About = () => {
             Who I Am
           </div>
           
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] mb-6 leading-[1.1] tracking-tight" style={{ fontFamily: "var(--heading-font)" }}>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] leading-[1.1] tracking-tight" style={{ fontFamily: "var(--heading-font)" }}>
             Elevating Ideas into{" "}
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] via-violet-500 to-fuchsia-500 italic">
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-violet-500 italic">
               Digital Reality
             </span>
           </h2>

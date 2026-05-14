@@ -14,21 +14,21 @@ function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-6 pt-28 pb-20"
+      className="min-h-screen flex items-center justify-center relative overflow-x-hidden px-5 sm:px-8 lg:px-12 pt-28 pb-16"
     >
       {/* Background Decorative Elements */}
       <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--primary)]/10 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/10 blur-[120px] rounded-full"></div>
 
       {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto text-center relative z-10 pb-20 sm:pb-6">
+      <div className="max-w-7xl mx-auto text-center relative z-10 pb-10 sm:pb-4">
         
         {/* Subtle Greeting */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)]/50 backdrop-blur-md mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)]/50 backdrop-blur-md mb-5"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -40,14 +40,16 @@ function Hero() {
         </motion.div>
 
         {/* Main Heading - Responsive text scaling */}
-      <motion.h1
+     <motion.h1
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.2, duration: 0.7 }}
-  className="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-extrabold leading-[1.1] tracking-[-0.03em] text-[var(--text)]"
+  /* 1. Changed tracking-[-0.02em] to tracking-tight or tracking-normal to widen the text block */
+  /* 2. Added w-full and text-center (optional) to ensure it uses the full container width */
+  className="w-full text-6xl sm:text-6xl md:text-7xl lg:text-[100px] xl:text-[110px] font-extrabold leading-[1.1] tracking-tight text-[var(--text)]"
 >
   <span className="italic">Harshal</span>{" "}
-  <span className="italic inline-block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 drop-shadow-sm pr-4">
+  <span className="italic inline-block pb-2 pr-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 drop-shadow-sm">
     Teli
   </span>
 </motion.h1>
@@ -57,7 +59,7 @@ function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-6 text-xl sm:text-2xl md:text-4xl font-bold text-[var(--text)]"
+          className="mt-4 text-xl sm:text-2xl md:text-4xl font-bold text-[var(--text)]"
         >
           <span>A dedicated </span>
           <span className="text-indigo-600 block sm:inline">
@@ -78,7 +80,7 @@ function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="mt-8 max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed text-[var(--text-light)]"
+          className="mt-5 max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed text-[var(--text-light)]"
         >
           Building scalable, modern web applications with a focus on 
           <span className="text-[var(--text)] font-medium"> clean architecture</span> and 
@@ -126,17 +128,17 @@ function Hero() {
       </div>
 
       {/* Scroll Down Button */}
-      <div className="pt-10">
+      {/* <div className="pt-20">
       <motion.button
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
         onClick={scrollToAbout}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 p-3 rounded-full border border-[var(--border)] text-[var(--text-light)] hover:text-indigo-600 hover:border-indigo-600 transition-all duration-300 bg-[var(--surface)]/50 backdrop-blur-md cursor-pointer z-20"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 p-3 rounded-full border border-[var(--border)] text-[var(--text-light)] hover:text-indigo-600 hover:border-indigo-600 transition-all duration-300 bg-[var(--surface)]/50 backdrop-blur-md cursor-pointer  z-20"
       >
         <ChevronDown size={24} />
       </motion.button>
-      </div>
+      </div> */}
     </section>
   );
 }

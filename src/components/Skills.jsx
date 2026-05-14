@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaJava, FaDatabase,
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaJava, FaDatabase, FaGitAlt, FaGithub,
 } from "react-icons/fa";
 import { SiTailwindcss, SiSpringboot, SiMysql, SiPostgresql } from "react-icons/si";
 
@@ -10,6 +10,7 @@ const categories = [
   { id: "frontend", label: "Frontend" },
   { id: "backend",  label: "Backend" },
   { id: "database", label: "Database" },
+  { id: "tools",    label: "Tools" },
 ];
 
 const skills = [
@@ -96,12 +97,30 @@ const skills = [
     category: "database",
     level: 75,
   },
+  // ── Tools ─────────────────────────────────────────────
+  {
+    name: "Git",
+    icon: FaGitAlt,
+    color: "#F05032",
+    bg: "rgba(240,80,50,0.1)",
+    category: "tools",
+    level: 88,
+  },
+  {
+    name: "GitHub",
+    icon: FaGithub,
+    color: "#6e5494",
+    bg: "rgba(110,84,148,0.1)",
+    category: "tools",
+    level: 85,
+  },
 ];
 
 const categoryMeta = {
   frontend: { label: "Frontend",  accent: "#4F46E5" },
   backend:  { label: "Backend",   accent: "#6DB33F" },
   database: { label: "Database",  accent: "#4479A1" },
+  tools:    { label: "Tools",     accent: "#F05032" },
 };
 
 const containerVariants = {
@@ -124,7 +143,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative py-8 px-5 sm:px-8 lg:px-12 overflow-hidden bg-[var(--bg)]"
+      className="relative py-16 px-5 sm:px-8 lg:px-12 overflow-hidden bg-[var(--bg)]"
       style={{ fontFamily: "var(--body-font)" }}
     >
       {/* ── Background blobs ── */}
@@ -139,7 +158,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-14"
+          className="text-center mb-10"
         >
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20"
@@ -171,7 +190,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="flex flex-wrap justify-center gap-2 mb-8"
         >
           {categories.map((cat) => (
             <button
@@ -196,7 +215,7 @@ export default function Skills() {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5"
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-3"
           >
             {filtered.map((skill) => {
               const Icon = skill.icon;
@@ -204,32 +223,32 @@ export default function Skills() {
                 <motion.div
                   key={skill.name}
                   variants={cardVariants}
-                  whileHover={{ y: -6, scale: 1.04 }}
-                  className="group relative flex flex-col items-center gap-3 p-5 rounded-2xl border border-[var(--border)] bg-[var(--surface)] cursor-default overflow-hidden transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.1)]"
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  className="group relative flex flex-col items-center gap-2 p-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] cursor-default overflow-hidden transition-shadow duration-300 hover:shadow-[0_6px_24px_rgba(0,0,0,0.08)] hover:border-[var(--primary)]/30"
                 >
                   {/* Glow on hover */}
                   <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
-                    style={{ background: `radial-gradient(circle at 50% 0%, ${skill.color}18 0%, transparent 70%)` }}
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"
+                    style={{ background: `radial-gradient(circle at 50% 0%, ${skill.color}15 0%, transparent 70%)` }}
                   />
 
                   {/* Category dot */}
                   <span
-                    className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full"
+                    className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full"
                     style={{ background: categoryMeta[skill.category].accent }}
                   />
 
                   {/* Icon bubble */}
                   <div
-                    className="relative z-10 w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                    className="relative z-10 w-10 h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
                     style={{ background: skill.bg }}
                   >
-                    <Icon size={30} color={skill.color} />
+                    <Icon size={22} color={skill.color} />
                   </div>
 
                   {/* Name */}
                   <p
-                    className="relative z-10 text-sm font-bold text-[var(--text)] text-center tracking-wide"
+                    className="relative z-10 text-xs font-bold text-[var(--text)] text-center tracking-wide leading-tight"
                     style={{ fontFamily: "var(--body-font)" }}
                   >
                     {skill.name}
@@ -237,11 +256,11 @@ export default function Skills() {
 
                   {/* Progress bar */}
                   <div className="relative z-10 w-full">
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-[10px] font-semibold text-[var(--text-light)] uppercase tracking-widest">
+                    <div className="flex justify-between items-center mb-0.5">
+                      <span className="text-[9px] font-semibold text-[var(--text-light)] uppercase tracking-widest">
                         {categoryMeta[skill.category].label}
                       </span>
-                      <span className="text-[10px] font-bold" style={{ color: skill.color }}>
+                      <span className="text-[9px] font-bold" style={{ color: skill.color }}>
                         {skill.level}%
                       </span>
                     </div>
@@ -268,7 +287,7 @@ export default function Skills() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-6 mt-12"
+          className="flex flex-wrap justify-center gap-6 mt-8"
         >
           {Object.entries(categoryMeta).map(([key, { label, accent }]) => (
             <div key={key} className="flex items-center gap-2">
