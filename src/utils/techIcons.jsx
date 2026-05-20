@@ -31,7 +31,7 @@ export function TechPill({ tag, size = 13 }) {
 
   return (
     <span
-      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-[var(--accent)] text-[var(--primary)] border border-[var(--primary)]/15"
+      className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(199,168,106,0.16)] bg-[rgba(255,255,255,0.03)] px-2.5 py-1 text-[11px] font-semibold text-[var(--text)]"
     >
       <Icon size={size} style={{ color, flexShrink: 0 }} />
       {tag}

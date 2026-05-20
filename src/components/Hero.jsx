@@ -1,144 +1,204 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, ChevronDown } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { TypeAnimation } from "react-type-animation";
+import profileImg from "../assets/profile.jpg";
+
+const socialLinks = [
+  { icon: FaGithub, href: "#", label: "GitHub" },
+  { icon: FaLinkedinIn, href: "#", label: "LinkedIn" },
+];
+
+const HEADING = "Building dependable digital products with a classic, modern edge.";
+
+// Stagger container
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -20 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.55, ease: "easeOut" } },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 44, scale: 0.97 },
+  show: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.75, ease: "easeOut", delay: 0.3 } },
+};
+
+function useTypewriter(text, speed = 32, startDelay = 500) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let i = 0;
+    setDisplayed("");
+    setDone(false);
+
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        i++;
+        setDisplayed(text.slice(0, i));
+        if (i >= text.length) {
+          clearInterval(interval);
+          setDone(true);
+        }
+      }, speed);
+      return () => clearInterval(interval);
+    }, startDelay);
+
+    return () => clearTimeout(timeout);
+  }, [text, speed, startDelay]);
+
+  return { displayed, done };
+}
 
 function Hero() {
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const { displayed, done } = useTypewriter(HEADING, 30, 600);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-x-hidden px-5 sm:px-8 lg:px-12 pt-28 pb-16"
+      className="relative flex min-h-screen items-center overflow-x-hidden px-5 pb-8 pt-20 sm:px-8 lg:px-12 lg:pt-24"
     >
-      {/* Background Decorative Elements */}
-      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[var(--primary)]/10 blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-500/10 blur-[120px] rounded-full"></div>
+      <div className="absolute left-0 top-16 h-80 w-80 rounded-full bg-[rgba(199,168,106,0.10)] blur-[140px]" />
+      <div className="absolute right-0 top-28 h-72 w-72 rounded-full bg-[rgba(142,163,199,0.10)] blur-[140px]" />
 
-      {/* Main Content Container */}
-      <div className="max-w-7xl mx-auto text-center relative z-10 pb-10 sm:pb-4">
-        
-        {/* Subtle Greeting */}
+      {/* max-w-7xl matches the navbar container */}
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-6 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-12">
+
+        {/* TEXT COLUMN */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)]/50 backdrop-blur-md mb-5"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col gap-5"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          <span className="text-xs sm:text-sm font-medium tracking-wider text-[var(--text-light)] uppercase">
-            Available for new opportunities
-          </span>
-        </motion.div>
+          {/* Badge */}
+          <motion.div
+            variants={fadeLeft}
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(199,168,106,0.22)] bg-[rgba(255,255,255,0.03)] px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--primary)]"
+          >
+            <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
+            Available for professional opportunities
+          </motion.div>
 
-        {/* Main Heading - Responsive text scaling */}
-     <motion.h1
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.2, duration: 0.7 }}
-  /* 1. Changed tracking-[-0.02em] to tracking-tight or tracking-normal to widen the text block */
-  /* 2. Added w-full and text-center (optional) to ensure it uses the full container width */
-  className="w-full text-6xl sm:text-6xl md:text-7xl lg:text-[100px] xl:text-[110px] font-extrabold leading-[1.1] tracking-tight text-[var(--text)]"
->
-  <span className="italic">Harshal</span>{" "}
-  <span className="italic inline-block pb-2 pr-6 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 drop-shadow-sm">
-    Teli
-  </span>
-</motion.h1>
+          {/* Typewriter heading */}
+          <motion.h1
+            variants={fadeUp}
+            className="text-3xl font-extrabold leading-[1.15] tracking-tight text-[var(--text)] sm:text-4xl lg:text-[2.8rem] lg:leading-[1.18]"
+            style={{ fontFamily: "var(--heading-font)" }}
+          >
+            {displayed}
+            {/* blinking cursor while typing */}
+            {!done && (
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.7, repeat: Infinity, ease: "linear" }}
+                className="ml-0.5 inline-block h-[1em] w-[3px] translate-y-[2px] rounded-sm bg-[var(--primary)]"
+              />
+            )}
+          </motion.h1>
 
-        {/* Animated Role Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="mt-4 text-xl sm:text-2xl md:text-4xl font-bold text-[var(--text)]"
-        >
-          <span>A dedicated </span>
-          <span className="text-indigo-600 block sm:inline">
-            <TypeAnimation
-              sequence={[
-                "Full Stack Developer", 2000,
-                "Backend Developer", 2000,
-                "Frontend Developer", 2000,
-              ]}
-              speed={40}
-              repeat={Infinity}
-            />
-          </span>
-        </motion.div>
+          {/* Description — fades in after heading is done */}
+          <motion.p
+            variants={fadeUp}
+            className="max-w-lg text-sm leading-6 text-[var(--text-light)] sm:text-base sm:leading-7"
+          >
+            I am Harshal Teli, a full stack developer focused on clean architecture,
+            elegant interfaces, and web products that feel professional from the first interaction.
+          </motion.p>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="mt-5 max-w-2xl mx-auto text-base sm:text-lg md:text-xl leading-relaxed text-[var(--text-light)]"
-        >
-          Building scalable, modern web applications with a focus on 
-          <span className="text-[var(--text)] font-medium"> clean architecture</span> and 
-          <span className="text-[var(--text)] font-medium"> performance</span>.
-        </motion.p>
-
-        {/* Actions */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6"
-        >
-          <button className="w-full sm:w-auto px-8 py-4 rounded-xl  text-white font-bold flex items-center justify-center gap-2 bg-black transition-all shadow-lg shadow-indigo-200">
-            View Projects
-            <ArrowRight size={20} />
-          </button>
-
-          <button className="w-full sm:w-auto px-8 py-4 rounded-xl border-2 border-[var(--border)] bg-transparent text-[var(--text)] font-bold flex items-center justify-center gap-2 hover:bg-[var(--surface)] transition-all">
-            <Download size={20} />
-            Resume
-          </button>
-        </motion.div>
-
-        {/* Social Links */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1 }}
-          className="flex justify-center gap-6 mt-16"
-        >
-          {[
-            { icon: <FaGithub />, link: "#" },
-            { icon: <FaLinkedinIn />, link: "#" }
-          ].map((social, index) => (
+          {/* Buttons */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-3 sm:flex-row">
             <a
-              key={index}
-              href={social.link}
-              className="p-3 rounded-full border border-[var(--border)] text-[var(--text-light)] hover:text-indigo-600 hover:border-indigo-600 transition-all duration-300"
+              href="#projects"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-[#0b1020] shadow-[0_14px_40px_rgba(199,168,106,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--primary-hover)]"
             >
-              {social.icon}
+              View Projects
+              <ArrowRight size={16} />
             </a>
-          ))}
-        </motion.div> */}
-      </div>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-[var(--text)] transition-all duration-200 hover:border-[rgba(199,168,106,0.32)] hover:bg-[var(--accent)]"
+            >
+              <Download size={16} />
+               Resume
+            </a>
+          </motion.div>
 
-      {/* Scroll Down Button */}
-      {/* <div className="pt-20">
-      <motion.button
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-        onClick={scrollToAbout}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 p-3 rounded-full border border-[var(--border)] text-[var(--text-light)] hover:text-indigo-600 hover:border-indigo-600 transition-all duration-300 bg-[var(--surface)]/50 backdrop-blur-md cursor-pointer  z-20"
-      >
-        <ChevronDown size={24} />
-      </motion.button>
-      </div> */}
+          {/* Info Grid */}
+          <motion.div variants={fadeUp} className="grid gap-3 sm:grid-cols-3">
+            {[
+              { label: "Focus", value: "Full Stack Dev" },
+              { label: "Approach", value: "Clean & Scalable" },
+              { label: "Based In", value: "India, Remote" },
+            ].map(({ label, value }) => (
+              <div key={label} className="rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.02)] p-3.5">
+                <p className="text-[10px] uppercase tracking-[0.24em] text-[var(--text-light)]">{label}</p>
+                <p className="mt-1 text-sm font-semibold text-[var(--text)]">{value}</p>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* IMAGE COLUMN */}
+        <motion.div
+          variants={fadeRight}
+          initial="hidden"
+          animate="show"
+          className="relative flex items-center justify-center lg:justify-end"
+        >
+          <div className="relative w-[270px] lg:w-[300px]">
+            <div className="absolute -left-5 top-6 h-20 w-20 rounded-[1.75rem] border border-[rgba(199,168,106,0.12)] bg-[rgba(255,255,255,0.01)]" />
+            <div className="absolute -right-4 bottom-8 h-16 w-16 rounded-full border border-[rgba(142,163,199,0.14)] bg-[rgba(142,163,199,0.04)]" />
+
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(16,23,42,0.92),rgba(10,15,28,0.98))] p-3 shadow-[0_28px_80px_rgba(0,0,0,0.34)]"
+            >
+              <div className="overflow-hidden rounded-[1.6rem] border border-[rgba(255,255,255,0.06)] bg-[var(--surface-strong)]">
+                <img
+                  src={profileImg}
+                  alt="Harshal Teli"
+                  className="h-[290px] w-full object-cover object-top lg:h-[320px]"
+                />
+              </div>
+
+              <div className="mt-3 flex items-center justify-between rounded-[1.4rem] border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-3 py-2.5">
+                <div>
+                  <p className="text-[9px] uppercase tracking-[0.22em] text-[var(--text-light)]">
+                    Professional Profile
+                  </p>
+                  <p className="mt-0.5 text-xs font-semibold text-[var(--text)]">
+                    Developer with design awareness
+                  </p>
+                </div>
+                <div className="flex gap-1.5">
+                  {socialLinks.map(({ icon: Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      className="flex h-8 w-8 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.02)] text-[var(--text-light)] transition-colors duration-200 hover:border-[rgba(199,168,106,0.35)] hover:text-[var(--primary)]"
+                    >
+                      <Icon size={13} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+      </div>
     </section>
   );
 }

@@ -75,11 +75,10 @@ function EducationCard({ edu, index, isActive, onClick }) {
       <div className="flex-1 min-w-0 mb-4">
         <div
           onClick={onClick}
-          className={`w-full rounded-2xl border bg-[var(--surface)] cursor-pointer transition-all duration-300 ${
-            isActive
+          className={`w-full rounded-2xl border bg-[var(--surface)] cursor-pointer transition-all duration-300 ${isActive
               ? "border-[var(--primary)]/40 shadow-[0_8px_32px_rgba(79,70,229,0.1)]"
               : "border-[var(--border)] hover:border-[var(--primary)]/30"
-          }`}
+            }`}
         >
           {/* Top accent strip */}
           <div className={`h-[3px] w-full rounded-t-2xl bg-[var(--primary)] transition-opacity duration-300 ${isActive ? "opacity-100" : "opacity-30"}`} />
@@ -134,17 +133,17 @@ function EducationCard({ edu, index, isActive, onClick }) {
               {/* Grade badge + chevron */}
               <div className="flex items-center gap-2 shrink-0 ml-2">
                 <div className="flex items-center gap-3 pl-2 py-1">
-                {/* The Accent Bar */}
-                <div className="w-1 h-10 rounded-full bg-[var(--accent)]" />
-                <div className="flex flex-col">
-               <span className="text-xl font-black text-[var(--primary)] leading-tight italic tracking-tighter">
-                {edu.grade}
-               </span>
-                <span className="text-[9px] font-bold text-[var(--text-light)] uppercase tracking-[0.15em] -mt-1">
-                {edu.gradeLabel}
-               </span>
-              </div>
-            </div>
+                  {/* The Accent Bar */}
+                  <div className="w-1 h-10 rounded-full bg-[var(--accent)]" />
+                  <div className="flex flex-col">
+                    <span className="text-xl font-black text-[var(--primary)] leading-tight italic tracking-tighter">
+                      {edu.grade}
+                    </span>
+                    <span className="text-[9px] font-bold text-[var(--text-light)] uppercase tracking-[0.15em] -mt-1">
+                      {edu.gradeLabel}
+                    </span>
+                  </div>
+                </div>
                 <motion.div
                   animate={{ rotate: isActive ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -201,7 +200,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="relative py-24 px-5 sm:px-8 lg:px-12 overflow-hidden bg-[var(--bg)]"
+      className="relative py-16 px-5 sm:px-8 sm:py-20 lg:px-12 overflow-hidden bg-[var(--bg)]"
       style={{ fontFamily: "var(--body-font)" }}
     >
       <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--primary)]/5 blur-[140px] rounded-full -z-10" />
@@ -215,7 +214,7 @@ export default function Education() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="mb-14"
+          className="mb-10"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
             <span className="relative flex h-1.5 w-1.5">
@@ -231,7 +230,7 @@ export default function Education() {
               style={{ fontFamily: "var(--heading-font)" }}
             >
               My{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-violet-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
                 Education
               </span>
             </h2>

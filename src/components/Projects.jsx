@@ -4,22 +4,16 @@ import { ArrowUpRight, ExternalLink, X } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { TechPill } from "../utils/techIcons";
 
-/* ─────────────────────────────────────────────
-   DATA
-   To add a screenshot:
-     1. import img from "../assets/your-screenshot.png"
-     2. set  image: img  on the project object
-───────────────────────────────────────────── */
 const projects = [
   {
     id: 1,
     number: "01",
     title: "Project Alpha",
-    tagline: "Full-stack Web Application",
+    tagline: "Full Stack Web Application",
     description:
-      "A brief description of what this project does and the problem it solves. Replace with your real project details.",
+      "A structured end-to-end product built to solve a real workflow with strong backend logic and polished UI.",
     longDescription:
-      "Extended detail shown in the modal. Describe the architecture, key challenges, how you solved them, and what you learned. Mention performance improvements, design decisions, or anything that makes this project stand out.",
+      "This project focused on building a complete web application with clear information architecture, scalable backend services, and a user interface designed for simplicity and reliability. It demonstrates my approach to balancing business requirements, clean code, and performance-oriented implementation.",
     tags: ["React", "Spring Boot", "MySQL"],
     year: "2024",
     live: "#",
@@ -30,11 +24,11 @@ const projects = [
     id: 2,
     number: "02",
     title: "Project Beta",
-    tagline: "Backend REST API",
+    tagline: "Backend API Platform",
     description:
-      "Describe the architecture, key features, and technologies used. Mention scale, performance wins, or interesting engineering decisions.",
+      "A service-driven backend architecture designed for maintainability, secure integrations, and efficient data access.",
     longDescription:
-      "Extended detail about this project. Describe the microservice architecture, authentication strategy, database design decisions, and any performance benchmarks you achieved.",
+      "This backend-focused project highlights REST API development, secure request handling, clean service separation, and practical database design. It reflects my ability to build reliable systems that support real product growth over time.",
     tags: ["Java", "Spring Boot", "PostgreSQL"],
     year: "2024",
     live: "#",
@@ -45,11 +39,11 @@ const projects = [
     id: 3,
     number: "03",
     title: "Project Gamma",
-    tagline: "Frontend UI / Design System",
+    tagline: "Frontend Experience System",
     description:
-      "Talk about the design decisions, component architecture, accessibility considerations, and performance optimisations.",
+      "A modern interface project centered on readability, reusable UI components, and strong visual consistency.",
     longDescription:
-      "Describe the component library, design tokens system, accessibility compliance, and performance improvements through code splitting and lazy loading.",
+      "This project demonstrates interface craftsmanship through reusable component patterns, accessibility-conscious implementation, and a refined visual system. The goal was to produce a frontend that feels both premium and practical.",
     tags: ["React", "Tailwind CSS", "JavaScript"],
     year: "2023",
     live: "#",
@@ -60,11 +54,11 @@ const projects = [
     id: 4,
     number: "04",
     title: "Project Delta",
-    tagline: "Database & Analytics",
+    tagline: "Data and Reporting Solution",
     description:
-      "Explain the data model, query optimisations, reporting features, and interesting challenges solved at the data layer.",
+      "A reporting-oriented product focused on structured data modeling, SQL performance, and business visibility.",
     longDescription:
-      "Detail the schema design, complex query optimisations, reporting pipeline, and data visualisation tools. Mention indexing strategies or caching layers used.",
+      "This project emphasizes data-driven thinking, efficient schema decisions, and optimized query handling. It showcases how I approach backend reporting problems with a mix of clarity, performance, and maintainable design.",
     tags: ["SQL", "PostgreSQL", "Java"],
     year: "2023",
     live: "#",
@@ -73,22 +67,16 @@ const projects = [
   },
 ];
 
-/* ─────────────────────────────────────────────
-   ANIMATION VARIANTS
-───────────────────────────────────────────── */
 const containerVariants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.08 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 32 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
-/* ─────────────────────────────────────────────
-   MODAL
-───────────────────────────────────────────── */
 function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
@@ -101,95 +89,75 @@ function ProjectModal({ project, onClose }) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
       />
 
       <motion.div
         key="modal"
-        initial={{ opacity: 0, y: 50, scale: 0.97 }}
+        initial={{ opacity: 0, y: 40, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 30, scale: 0.97 }}
+        exit={{ opacity: 0, y: 24, scale: 0.98 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 pointer-events-none"
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
       >
         <div
-          className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border border-[var(--border)] bg-[var(--surface)] shadow-2xl pointer-events-auto"
+          className="relative w-full max-w-3xl overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] shadow-[0_28px_80px_rgba(0,0,0,0.42)]"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* ── Header image / gradient ── */}
-          <div className="relative h-48 sm:h-56 bg-[var(--accent)] border-b border-[var(--border)] overflow-hidden rounded-t-3xl flex items-center justify-center">
-            {/* Dot-grid pattern */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `radial-gradient(circle, var(--border) 1px, transparent 1px)`,
-                backgroundSize: "20px 20px",
-              }}
-            />
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            ) : (
-              <span
-                className="relative text-[96px] font-black leading-none select-none text-[var(--primary)]/10"
-                style={{ fontFamily: "var(--heading-font)" }}
+          <div className="border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.12),rgba(255,255,255,0.02))] p-6 sm:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--primary)]">
+                  {project.tagline}
+                </p>
+                <h2
+                  className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--text)] sm:text-4xl"
+                  style={{ fontFamily: "var(--heading-font)" }}
+                >
+                  {project.title}
+                </h2>
+              </div>
+
+              <button
+                onClick={onClose}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
               >
-                {project.number}
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <span className="rounded-full border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[var(--text-light)]">
+                {project.year}
               </span>
-            )}
-
-            {/* Close */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 w-9 h-9 rounded-xl bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
-            >
-              <X size={16} />
-            </button>
-
-            {/* Year */}
-            <span className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--text-light)] text-[10px] font-bold uppercase tracking-widest">
-              {project.year}
-            </span>
+              <span className="rounded-full border border-[rgba(199,168,106,0.24)] bg-[var(--accent)] px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[var(--primary)]">
+                Case Study
+              </span>
+            </div>
           </div>
 
-          {/* ── Body ── */}
           <div className="p-6 sm:p-8">
-            <p className="text-[11px] font-bold text-[var(--primary)] uppercase tracking-widest mb-1">
-              {project.tagline}
-            </p>
-            <h2
-              className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] mb-4 leading-tight tracking-tight"
-              style={{ fontFamily: "var(--heading-font)" }}
-            >
-              {project.title}
-            </h2>
-
-            <p className="text-sm text-[var(--text-light)] leading-relaxed mb-6">
+            <p className="text-base leading-8 text-[var(--text-light)]">
               {project.longDescription}
             </p>
 
-            {/* Tags */}
-            <div className="flex items-center gap-2 flex-wrap mb-6">
+            <div className="mt-6 flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <TechPill key={tag} tag={tag} />
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="flex flex-wrap gap-3 pt-4 border-t border-[var(--border)]">
+            <div className="mt-8 flex flex-wrap gap-3 border-t border-[var(--border)] pt-6">
               <a
                 href={project.live}
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[var(--primary)] text-white text-sm font-bold hover:bg-[var(--primary-hover)] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-[#0b1020] hover:bg-[var(--primary-hover)]"
               >
                 <ExternalLink size={15} />
                 Live Demo
               </a>
               <a
                 href={project.github}
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 border-[var(--border)] text-[var(--text)] text-sm font-bold hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-[var(--text)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
               >
                 <FaGithub size={15} />
                 Source Code
@@ -202,207 +170,130 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
-/* ─────────────────────────────────────────────
-   CARD
-───────────────────────────────────────────── */
 function ProjectCard({ project, onOpen }) {
   return (
     <motion.div
       variants={cardVariants}
       whileHover={{ y: -5 }}
-      transition={{ duration: 0.2 }}
-      className="group relative flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden transition-all duration-300 hover:border-[var(--primary)]/40 hover:shadow-[0_12px_40px_rgba(79,70,229,0.1)]"
+      className="group flex h-full flex-col rounded-[1.8rem] border border-[var(--border)] bg-[rgba(16,23,42,0.72)] shadow-[0_12px_34px_rgba(0,0,0,0.18)]"
     >
-      {/* ── Preview area ── */}
-      <div className="relative h-28 bg-[var(--accent)] border-b border-[var(--border)] overflow-hidden flex items-center justify-center">
-        {/* Dot-grid texture */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle, var(--border) 1px, transparent 1px)`,
-            backgroundSize: "18px 18px",
-          }}
-        />
-        {project.image ? (
-          <img
-            src={project.image}
-            alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
+      <div className="border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.10),rgba(255,255,255,0.02))] p-5">
+        <div className="flex items-center justify-between">
           <span
-            className="relative text-[56px] font-black leading-none select-none text-[var(--primary)]/15 group-hover:text-[var(--primary)]/25 transition-colors duration-300"
+            className="text-3xl font-extrabold tracking-tight text-[var(--primary)]"
             style={{ fontFamily: "var(--heading-font)" }}
           >
             {project.number}
           </span>
-        )}
-
-        {/* Year chip */}
-        <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[var(--text-light)] text-[10px] font-bold uppercase tracking-widest">
-          {project.year}
-        </span>
-      </div>
-
-      {/* ── Body ── */}
-      <div className="flex flex-col flex-1 p-4">
-        {/* Number + icons */}
-        <div className="flex items-center justify-between mb-2">
-          <span
-            className="text-2xl font-black leading-none select-none text-[var(--primary)]"
-            style={{ fontFamily: "var(--heading-font)" }}
-          >
-            {project.number}
+          <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[var(--text-light)]">
+            {project.year}
           </span>
-
-          <div className="flex gap-1.5">
-            <a
-              href={project.github}
-              onClick={(e) => e.stopPropagation()}
-              className="w-7 h-7 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
-            >
-              <FaGithub size={13} />
-            </a>
-            <a
-              href={project.live}
-              onClick={(e) => e.stopPropagation()}
-              className="w-7 h-7 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-light)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all"
-            >
-              <ExternalLink size={13} />
-            </a>
-          </div>
         </div>
 
-        {/* Tagline */}
-        <p className="text-[10px] font-bold text-[var(--primary)] uppercase tracking-widest mb-0.5">
+        <p className="mt-5 text-[11px] uppercase tracking-[0.22em] text-[var(--primary)]">
           {project.tagline}
         </p>
-
-        {/* Title */}
         <h3
-          className="text-sm font-extrabold text-[var(--text)] mb-2 leading-snug tracking-tight"
+          className="mt-2 text-2xl font-extrabold leading-tight tracking-tight text-[var(--text)]"
           style={{ fontFamily: "var(--heading-font)" }}
         >
           {project.title}
         </h3>
+      </div>
 
-        {/* Description */}
-        <p className="text-xs text-[var(--text-light)] leading-relaxed flex-1 mb-3 line-clamp-2">
+      <div className="flex flex-1 flex-col p-5">
+        <p className="text-sm leading-7 text-[var(--text-light)]">
           {project.description}
         </p>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1 mb-3">
+        <div className="mt-5 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <TechPill key={tag} tag={tag} size={11} />
+            <TechPill key={tag} tag={tag} size={12} />
           ))}
         </div>
 
-        {/* View Project button */}
-        <button
-          onClick={() => onOpen(project)}
-          className="w-full flex items-center justify-center gap-1.5 py-2 rounded-xl bg-[var(--accent)] border border-[var(--primary)]/20 text-[var(--primary)] text-[10px] font-bold uppercase tracking-widest hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] transition-all duration-300 group/btn"
-        >
-          View Project
-          <ArrowUpRight
-            size={11}
-            className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
-          />
-        </button>
-      </div>
+        <div className="mt-6 flex items-center justify-between gap-3 border-t border-[var(--border)] pt-5">
+          <button
+            onClick={() => onOpen(project)}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)] hover:text-[var(--primary)]"
+          >
+            View details
+            <ArrowUpRight size={16} />
+          </button>
 
-      {/* Bottom accent line on hover */}
-      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-[var(--primary)] transition-all duration-500 rounded-full" />
+          <div className="flex gap-2">
+            <a
+              href={project.github}
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
+            >
+              <FaGithub size={14} />
+            </a>
+            <a
+              href={project.live}
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
+            >
+              <ExternalLink size={14} />
+            </a>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }
 
-/* ─────────────────────────────────────────────
-   MAIN
-───────────────────────────────────────────── */
 export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   return (
     <section
       id="projects"
-      className="relative py-24 px-5 sm:px-8 lg:px-12 overflow-hidden bg-[var(--bg)]"
+      className="relative overflow-hidden px-5 py-16 sm:px-8 sm:py-20 lg:px-12"
       style={{ fontFamily: "var(--body-font)" }}
     >
-      {/* Background blobs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--primary)]/5 blur-[160px] rounded-full -z-10" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[var(--primary)]/5 blur-[120px] rounded-full -z-10" />
+      <div className="absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-[rgba(199,168,106,0.08)] blur-[150px]" />
 
-      <div className="max-w-7xl mx-auto">
-
-        {/* ── Header ── */}
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="mb-14"
+          className="mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-60" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]" />
-            </span>
-            What I've Built
+          <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(199,168,106,0.22)] bg-[var(--accent)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[var(--primary)]">
+            <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
+            Selected Work
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-            <h2
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] leading-[1.1] tracking-tight"
-              style={{ fontFamily: "var(--heading-font)" }}
-            >
-              My{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-violet-500">
-                Projects
-              </span>
-            </h2>
-            <p className="text-sm text-[var(--text-light)] max-w-xs leading-relaxed sm:text-right">
-              Click "View Project" on any card to see full details.
-            </p>
+          <div className="mt-5 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2
+                className="text-4xl font-extrabold leading-[1.08] tracking-tight text-[var(--text)] sm:text-5xl lg:text-[3.6rem]"
+                style={{ fontFamily: "var(--heading-font)" }}
+              >
+                Projects presented with clarity and purpose.
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--text-light)]">
+                A selection of product and engineering work that reflects my approach to quality,
+                reliability, and professional execution.
+              </p>
+            </div>
           </div>
         </motion.div>
 
-        {/* ── Grid ── */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
         >
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} onOpen={setSelected} />
           ))}
         </motion.div>
-
-        {/* ── GitHub CTA ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex justify-center mt-14"
-        >
-          <a
-            href="#"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl border-2 border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-sm font-bold hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all duration-300"
-          >
-            <FaGithub size={18} />
-            View all projects on GitHub
-            <ArrowUpRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
-        </motion.div>
       </div>
 
-      {/* ── Modal ── */}
       {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
     </section>
   );

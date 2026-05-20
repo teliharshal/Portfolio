@@ -22,8 +22,8 @@ export default function CustomCursor() {
 
     const onLeave = () => setIsVisible(false);
     const onEnter = () => setIsVisible(true);
-    const onDown  = () => setIsClicking(true);
-    const onUp    = () => setIsClicking(false);
+    const onDown = () => setIsClicking(true);
+    const onUp = () => setIsClicking(false);
 
     // Detect hoverable elements
     const onHoverStart = (e) => {
@@ -71,12 +71,12 @@ export default function CustomCursor() {
         animate={{
           x: pos.x - (isHovering ? 20 : 16),
           y: pos.y - (isHovering ? 20 : 16),
-          width:  isHovering ? 40 : 32,
+          width: isHovering ? 40 : 32,
           height: isHovering ? 40 : 32,
           opacity: isVisible ? 1 : 0,
           scale: isClicking ? 0.8 : 1,
-          backgroundColor: isHovering ? "rgba(79,70,229,0.12)" : "transparent",
-          borderColor: isHovering ? "rgba(79,70,229,0.8)" : "rgba(79,70,229,0.5)",
+          backgroundColor: isHovering ? "rgba(199,168,106,0.12)" : "transparent",
+          borderColor: isHovering ? "rgba(199,168,106,0.8)" : "rgba(199,168,106,0.5)",
         }}
         transition={{ type: "tween", duration: 0, ease: "linear" }}
         style={{
@@ -96,10 +96,10 @@ export default function CustomCursor() {
         animate={{
           x: dotPos.x - (isClicking ? 3 : 2),
           y: dotPos.y - (isClicking ? 3 : 2),
-          width:  isClicking ? 6 : 4,
+          width: isClicking ? 6 : 4,
           height: isClicking ? 6 : 4,
           opacity: isVisible ? 1 : 0,
-          backgroundColor: isHovering ? "#4F46E5" : "#4F46E5",
+          backgroundColor: isHovering ? "#c7a86a" : "#c7a86a",
         }}
         transition={{ type: "tween", duration: 0, ease: "linear" }}
         style={{

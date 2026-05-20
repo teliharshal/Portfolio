@@ -14,7 +14,7 @@ const experiences = [
     location: "City, State",
     duration: "Jan 2024 – Apr 2024",
     type: "Internship",
-    gradient: "from-indigo-500 to-violet-600",
+    gradient: "from-[var(--primary)] to-[var(--secondary)]",
     color: "#4F46E5",
     points: [
       "Developed and maintained RESTful APIs using Spring Boot, improving response time by 30%.",
@@ -99,11 +99,10 @@ function ExperienceCard({ exp, index, isActive, onClick }) {
           onClick={onClick}
           whileHover={{ x: 4 }}
           transition={{ duration: 0.2 }}
-          className={`relative rounded-2xl border cursor-pointer overflow-hidden transition-all duration-300 ${
-            isActive
+          className={`relative rounded-2xl border cursor-pointer overflow-hidden transition-all duration-300 ${isActive
               ? "border-[var(--primary)]/40 shadow-[0_8px_32px_rgba(79,70,229,0.12)]"
               : "border-[var(--border)] hover:border-[var(--primary)]/30"
-          } bg-[var(--surface)]`}
+            } bg-[var(--surface)]`}
         >
           {/* Gradient left bar */}
           <div
@@ -230,12 +229,12 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative py-8 px-5 sm:px-8 lg:px-12 overflow-hidden bg-[var(--bg)]"
+      className="relative py-8 px-5 sm:px-8 sm:py-20 lg:px-12 overflow-hidden bg-[var(--bg)]"
       style={{ fontFamily: "var(--body-font)" }}
     >
       {/* Background blobs */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[var(--primary)]/5 blur-[140px] rounded-full -z-10" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-violet-500/5 blur-[120px] rounded-full -z-10" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[rgba(142,163,199,0.08)] blur-[120px] rounded-full -z-10" />
 
       <div className="max-w-7xl mx-auto">
 
@@ -245,7 +244,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="mb-14"
+          className="mb-10"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
             <span className="relative flex h-1.5 w-1.5">
@@ -261,7 +260,7 @@ export default function Experience() {
               style={{ fontFamily: "var(--heading-font)" }}
             >
               Work{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-violet-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
                 Experience
               </span>
             </h2>
@@ -338,11 +337,10 @@ export default function Experience() {
                   <button
                     key={exp.id}
                     onClick={() => setActiveId(exp.id)}
-                    className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-200 ${
-                      activeId === exp.id
+                    className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all duration-200 ${activeId === exp.id
                         ? "border-[var(--primary)]/30 bg-[var(--accent)]"
                         : "border-transparent hover:bg-[var(--bg)]"
-                    }`}
+                      }`}
                   >
                     <span
                       className="shrink-0 w-2 h-2 rounded-full"
