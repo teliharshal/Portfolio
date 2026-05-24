@@ -6,10 +6,10 @@ const highlights = [
     label: "Development",
     text: "Building stable full stack systems with strong structure, performance, and maintainability.",
   },
-  {
-    label: "Design Sense",
-    text: "Creating interfaces that feel polished, readable, and aligned with business needs.",
-  },
+  // {
+  //   label: "Design Sense",
+  //   text: "Creating interfaces that feel polished, readable, and aligned with business needs.",
+  // },
 ];
 
 const About = () => {

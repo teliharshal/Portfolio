@@ -10,7 +10,7 @@ import {
   FaGitAlt,
   FaGithub,
 } from "react-icons/fa";
-import { SiTailwindcss, SiSpringboot, SiMysql, SiPostgresql } from "react-icons/si";
+import { SiTailwindcss, SiSpringboot, SiMysql, SiPostgresql, SiDocker } from "react-icons/si";
 
 const categories = [
   { id: "all", label: "All" },
@@ -33,6 +33,7 @@ const skills = [
   { name: "PostgreSQL", icon: SiPostgresql, color: "#336791", bg: "rgba(51,103,145,0.12)", category: "database", level: 75 },
   { name: "Git", icon: FaGitAlt, color: "#F05032", bg: "rgba(240,80,50,0.12)", category: "tools", level: 88 },
   { name: "GitHub", icon: FaGithub, color: "#9f8cc7", bg: "rgba(159,140,199,0.12)", category: "tools", level: 85 },
+  { name: "Docker", icon: SiDocker, color: "#2496ED", bg: "rgba(36,150,237,0.12)", category: "tools", level: 75 },
 ];
 
 const categoryMeta = {

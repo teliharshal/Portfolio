@@ -1,70 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ExternalLink, X } from "lucide-react";
+import { ArrowUpRight, ExternalLink, X, ChevronLeft, ChevronRight, Code } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import { TechPill } from "../utils/techIcons";
+import { TechPill, techMap } from "../utils/techIcons";
+import project1 from "../assets/Projects/project_1.png";
+import project2 from "../assets/Projects/project_2.png";
+import project3 from "../assets/Projects/project_3.png";
+import project4 from "../assets/Projects/project_4.png";
+import project5 from "../assets/Projects/project_5.png";
+import project6 from "../assets/Projects/project_6.png";
+import project7 from "../assets/Projects/project_7.png";
+import project8 from "../assets/Projects/Project_8.png";
+import project9 from "../assets/Projects/project_9.png";
 
 const projects = [
   {
     id: 1,
     number: "01",
-    title: "Project Alpha",
+    title: "Stack Trace - Employee Skill Management",
     tagline: "Full Stack Web Application",
     description:
-      "A structured end-to-end product built to solve a real workflow with strong backend logic and polished UI.",
+      "Stack_Trace is a scalable workforce training platform that simplifies employee skill development and assessment. It provides secure access management, learning progress tracking, and actionable analytics for organizations.",
     longDescription:
-      "This project focused on building a complete web application with clear information architecture, scalable backend services, and a user interface designed for simplicity and reliability. It demonstrates my approach to balancing business requirements, clean code, and performance-oriented implementation.",
+      "Stack_Trace is a full-stack SaaS platform that helps organizations manage employee skill development, training, and workforce evaluation. It enables admins to assign skills, set completion timelines, onboard employees through secure invitation links, and track learning progress via interactive dashboards. The platform features JWT authentication, RBAC, skill assessments, certification validation, progress tracking, and automated reporting for effective workforce management.",
     tags: ["React", "Spring Boot", "MySQL"],
-    year: "2024",
-    live: "#",
-    github: "#",
-    image: null,
+    year: "2026",
+    live: "https://github.com/teliharshal/Stack_Trace",
+    github: "https://github.com/teliharshal/Stack_Trace",
+    image: project1,
+    images: [project1, project2, project3],
   },
   {
     id: 2,
     number: "02",
-    title: "Project Beta",
-    tagline: "Backend API Platform",
+    title: "Yuva-Mitra - NGO Community Platform",
+    tagline: "Ngo Plateform",
     description:
-      "A service-driven backend architecture designed for maintainability, secure integrations, and efficient data access.",
+      "NGO Connect is a responsive web platform that connects volunteers, communities, and social initiatives through an intuitive digital experience. It delivers seamless accessibility and consistent performance across desktop, tablet, and mobile devices.",
     longDescription:
-      "This backend-focused project highlights REST API development, secure request handling, clean service separation, and practical database design. It reflects my ability to build reliable systems that support real product growth over time.",
-    tags: ["Java", "Spring Boot", "PostgreSQL"],
-    year: "2024",
-    live: "#",
-    github: "#",
-    image: null,
+      "NGO Connect is a modern web platform designed to bridge the gap between volunteers, communities, and social causes. The application provides an engaging and user-friendly interface for discovering and participating in social initiatives while ensuring accessibility across multiple devices. Optimized for performance and responsiveness, it delivers a smooth and consistent experience on desktop, tablet, and mobile platforms.",
+    tags: ["React","Tailwind CSS","Framer Motion"],
+    year: "2026",
+    live: "https://yuva-public.vercel.app/",
+    github: "https://github.com/intern-ApplauseITSolutions/yuva--public",
+    image: [project4],
+    images: [project4 ,project5 , project6],
   },
   {
     id: 3,
     number: "03",
-    title: "Project Gamma",
-    tagline: "Frontend Experience System",
+    title: "Personal Portfolio Website",
+    tagline: "Personal Portfolio",
     description:
-      "A modern interface project centered on readability, reusable UI components, and strong visual consistency.",
+      "Personal Portfolio Website is a modern and responsive platform showcasing projects, technical skills, certifications, and professional achievements. It features smooth animations and dark/light theme support for an engaging user experience.",
     longDescription:
-      "This project demonstrates interface craftsmanship through reusable component patterns, accessibility-conscious implementation, and a refined visual system. The goal was to produce a frontend that feels both premium and practical.",
-    tags: ["React", "Tailwind CSS", "JavaScript"],
+      "Personal Portfolio Website is a fully responsive web application designed to present projects, technical expertise, certifications, and development experience in a professional manner. The platform incorporates smooth animations, intuitive navigation, and dark/light mode support to improve usability and visual appeal. Optimized for all devices, it delivers a seamless and interactive browsing experience.",
+    tags: ["React", "Tailwind CSS", "Framer Motion"],
     year: "2023",
-    live: "#",
-    github: "#",
-    image: null,
+    live: "https://harshateli.netlify.app/",
+    github: "https://github.com/teliharshal/Portfolio",
+    image: project7,
+    images: [project7,project8,project9],
   },
-  {
-    id: 4,
-    number: "04",
-    title: "Project Delta",
-    tagline: "Data and Reporting Solution",
-    description:
-      "A reporting-oriented product focused on structured data modeling, SQL performance, and business visibility.",
-    longDescription:
-      "This project emphasizes data-driven thinking, efficient schema decisions, and optimized query handling. It showcases how I approach backend reporting problems with a mix of clarity, performance, and maintainable design.",
-    tags: ["SQL", "PostgreSQL", "Java"],
-    year: "2023",
-    live: "#",
-    github: "#",
-    image: null,
-  },
+  // {
+  //   id: 4,
+  //   number: "04",
+  //   title: "Project Delta",
+  //   tagline: "Data and Reporting Solution",
+  //   description:
+  //     "A reporting-oriented product focused on structured data modeling, SQL performance, and business visibility.",
+  //   longDescription:
+  //     "This project emphasizes data-driven thinking, efficient schema decisions, and optimized query handling. It showcases how I approach backend reporting problems with a mix of clarity, performance, and maintainable design.",
+  //   tags: ["SQL", "PostgreSQL", "Java"],
+  //   year: "2023",
+  //   live: "#",
+  //   github: "#",
+  //   image: null,
+  //   images: [],
+  // },
 ];
 
 const containerVariants = {
@@ -77,92 +90,157 @@ const cardVariants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
+/* ─── Modal ─────────────────────────────────────────────── */
 function ProjectModal({ project, onClose }) {
+  const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState(1);
+
+  const imgs = project?.images ?? [];
+  const hasMultiple = imgs.length > 1;
+
+  const go = useCallback((newDir) => {
+    setDir(newDir);
+    setIdx((i) => (i + newDir + imgs.length) % imgs.length);
+  }, [imgs.length]);
+
+  useEffect(() => {
+    if (!hasMultiple) return;
+    const t = setInterval(() => go(1), 4000);
+    return () => clearInterval(t);
+  }, [hasMultiple, go]);
+
   if (!project) return null;
+
+  const variants = {
+    enter: (d) => ({ opacity: 0, scale: 0.98 }),
+    center: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: "easeOut" } },
+    exit: (d) => ({ opacity: 0, scale: 0.98, transition: { duration: 0.25, ease: "easeIn" } }),
+  };
 
   return (
     <AnimatePresence>
+      {/* Backdrop */}
       <motion.div
-        key="backdrop"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        key="bd"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md"
       />
 
       <motion.div
-        key="modal"
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 24, scale: 0.98 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+        key="mw"
+        initial={{ opacity: 0, scale: 0.96, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.96, y: 10 }}
+        transition={{ duration: 0.28, ease: "easeOut" }}
+        onClick={onClose}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-10 pointer-events-none"
       >
         <div
-          className="relative w-full max-w-3xl overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--surface)] shadow-[0_28px_80px_rgba(0,0,0,0.42)]"
           onClick={(e) => e.stopPropagation()}
+          className="relative flex w-full max-w-[1200px] flex-col sm:flex-row overflow-hidden rounded-[2rem] bg-[var(--surface)] border border-[var(--border)] shadow-2xl pointer-events-auto"
+          style={{ minHeight: "500px", maxHeight: "85vh" }}
         >
-          <div className="border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.12),rgba(255,255,255,0.02))] p-6 sm:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--primary)]">
-                  {project.tagline}
-                </p>
-                <h2
-                  className="mt-2 text-3xl font-extrabold tracking-tight text-[var(--text)] sm:text-4xl"
-                  style={{ fontFamily: "var(--heading-font)" }}
-                >
-                  {project.title}
-                </h2>
+          {/* Close Button - Desktop (Absolute Top Right) */}
+          <button
+            onClick={onClose}
+            className="absolute right-6 top-6 z-20 flex h-8 w-8 items-center justify-center text-[var(--text-light)] hover:text-[var(--text)] transition-colors"
+          >
+            <X size={24} />
+          </button>
+
+          {/* ══ LEFT — image container ══ */}
+          <div className="relative flex w-full sm:w-[55%] flex-col justify-center bg-[var(--bg)] p-6 sm:p-10 border-r border-[var(--border)]">
+            {imgs.length > 0 ? (
+              <div className="relative flex-1 w-full h-full min-h-[250px] flex items-center justify-center">
+                <AnimatePresence custom={dir} mode="wait">
+                  <motion.img
+                    key={idx}
+                    custom={dir}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    src={imgs[idx]}
+                    alt={`${project.title} screenshot ${idx + 1}`}
+                    className="w-full max-h-full object-contain"
+                  />
+                </AnimatePresence>
+                {/* Pagination Dots */}
+                {hasMultiple && (
+                  <div className="absolute bottom-[-16px] left-1/2 flex -translate-x-1/2 gap-2">
+                    {imgs.map((_, i) => (
+                      <div key={i} className={`h-[3px] rounded-full transition-all duration-300 ${i === idx ? "w-6 bg-[var(--primary)]" : "w-3 bg-[var(--border)]"}`} />
+                    ))}
+                  </div>
+                )}
               </div>
-
-              <button
-                onClick={onClose}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
-              >
-                <X size={16} />
-              </button>
-            </div>
-
-            <div className="mt-5 flex flex-wrap gap-3">
-              <span className="rounded-full border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[var(--text-light)]">
-                {project.year}
-              </span>
-              <span className="rounded-full border border-[rgba(199,168,106,0.24)] bg-[var(--accent)] px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[var(--primary)]">
-                Case Study
-              </span>
-            </div>
+            ) : (
+              <div className="flex h-full items-center justify-center">
+                <span className="text-8xl font-black opacity-10 text-[var(--text)]" style={{ fontFamily: "var(--heading-font)" }}>{project.number}</span>
+              </div>
+            )}
           </div>
 
-          <div className="p-6 sm:p-8">
-            <p className="text-base leading-8 text-[var(--text-light)]">
-              {project.longDescription}
+          {/* ══ RIGHT — project details ══ */}
+          <div className="flex w-full sm:w-[45%] flex-col overflow-y-auto p-8 sm:p-12">
+            
+            <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--primary)] mb-4">
+              Project Detail
             </p>
+            
+            <h2 className="text-4xl sm:text-[2.75rem] font-black uppercase leading-[1.1] tracking-tight text-[var(--text)] mb-8" style={{ fontFamily: "var(--heading-font)" }}>
+              {project.title.split(' - ')[0]}
+            </h2>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <TechPill key={tag} tag={tag} />
-              ))}
+            {/* Subtle accent border on description */}
+            <div className="border-l-2 border-[var(--primary)]/20 pl-5 mb-10">
+              <p className="text-[15px] leading-7 text-[var(--text-light)]">
+                {project.description}
+              </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3 border-t border-[var(--border)] pt-6">
+            {/* Tech stack */}
+            <div>
+              <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--text-light)] opacity-70">
+                Tech Stack
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {project.tags.map((tag) => {
+                  const entry = techMap[tag];
+                  const Icon = entry?.icon ?? Code;
+                  const color = entry?.color ?? "var(--text)";
+                  return (
+                    <div key={tag} className="flex flex-col items-center justify-center gap-3 rounded-2xl bg-[var(--bg)] border border-[var(--border)] w-24 h-[84px] transition-transform hover:-translate-y-1 hover:border-[var(--primary)]/30">
+                      <Icon size={24} style={{ color }} />
+                      <span className="text-[9px] font-bold uppercase tracking-wider text-[var(--text-light)]">{tag}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="mt-auto pt-10 flex gap-4">
               <a
                 href={project.live}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[var(--primary)] px-6 py-3 text-sm font-semibold text-[#0b1020] hover:bg-[var(--primary-hover)]"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] px-5 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-[var(--primary-hover)] transition-colors shadow-sm"
               >
-                <ExternalLink size={15} />
-                Live Demo
+                <ExternalLink size={14} /> Live Demo
               </a>
               <a
                 href={project.github}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-[var(--text)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-[var(--surface)] text-[var(--text-light)] px-5 py-2.5 text-xs font-bold uppercase tracking-wider hover:bg-[var(--accent)] transition-colors border border-[var(--border)] hover:text-[var(--text)]"
               >
-                <FaGithub size={15} />
-                Source Code
+                <FaGithub size={14} /> Source
               </a>
             </div>
+
           </div>
         </div>
       </motion.div>
@@ -170,6 +248,7 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
+/* ─── Card ──────────────────────────────────────────────── */
 function ProjectCard({ project, onOpen }) {
   return (
     <motion.div
@@ -177,61 +256,58 @@ function ProjectCard({ project, onOpen }) {
       whileHover={{ y: -5 }}
       className="group flex h-full flex-col rounded-[1.8rem] border border-[var(--border)] bg-[rgba(16,23,42,0.72)] shadow-[0_12px_34px_rgba(0,0,0,0.18)]"
     >
-      <div className="border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.10),rgba(255,255,255,0.02))] p-5">
+      {project.image && (
+        <div className="overflow-hidden rounded-t-[1.8rem]">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-44 w-full object-cover object-top"
+          />
+        </div>
+      )}
+
+      <div className={`border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.10),rgba(255,255,255,0.02))] p-5 ${project.image ? "" : "rounded-t-[1.8rem]"}`}>
         <div className="flex items-center justify-between">
-          <span
-            className="text-3xl font-extrabold tracking-tight text-[var(--primary)]"
-            style={{ fontFamily: "var(--heading-font)" }}
-          >
+          <span className="text-3xl font-extrabold tracking-tight text-[var(--primary)]"
+            style={{ fontFamily: "var(--heading-font)" }}>
             {project.number}
           </span>
           <span className="rounded-full border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.22em] text-[var(--text-light)]">
             {project.year}
           </span>
         </div>
-
-        <p className="mt-5 text-[11px] uppercase tracking-[0.22em] text-[var(--primary)]">
+        <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-[var(--primary)]">
           {project.tagline}
         </p>
-        <h3
-          className="mt-2 text-2xl font-extrabold leading-tight tracking-tight text-[var(--text)]"
-          style={{ fontFamily: "var(--heading-font)" }}
-        >
+        <h3 className="mt-1.5 text-xl font-extrabold leading-tight tracking-tight text-[var(--text)]"
+          style={{ fontFamily: "var(--heading-font)" }}>
           {project.title}
         </h3>
       </div>
 
       <div className="flex flex-1 flex-col p-5">
-        <p className="text-sm leading-7 text-[var(--text-light)]">
-          {project.description}
-        </p>
+        {/* <p className="text-sm leading-7 text-[var(--text-light)]">{project.description}</p> */}
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        {/* <div className="mt-5 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <TechPill key={tag} tag={tag} size={12} />
           ))}
-        </div>
+        </div> */}
 
         <div className="mt-6 flex items-center justify-between gap-3 border-t border-[var(--border)] pt-5">
           <button
             onClick={() => onOpen(project)}
             className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)] hover:text-[var(--primary)]"
           >
-            View details
-            <ArrowUpRight size={16} />
+            View details <ArrowUpRight size={16} />
           </button>
-
           <div className="flex gap-2">
-            <a
-              href={project.github}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
-            >
+            <a href={project.github} target="_blank" rel="noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]">
               <FaGithub size={14} />
             </a>
-            <a
-              href={project.live}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]"
-            >
+            <a href={project.live} target="_blank" rel="noreferrer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]">
               <ExternalLink size={14} />
             </a>
           </div>
@@ -241,6 +317,7 @@ function ProjectCard({ project, onOpen }) {
   );
 }
 
+/* ─── Section ───────────────────────────────────────────── */
 export default function Projects() {
   const [selected, setSelected] = useState(null);
 
@@ -264,20 +341,17 @@ export default function Projects() {
             <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
             Selected Work
           </div>
-
-          <div className="mt-5 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2
-                className="text-4xl font-extrabold leading-[1.08] tracking-tight text-[var(--text)] sm:text-5xl lg:text-[3.6rem]"
-                style={{ fontFamily: "var(--heading-font)" }}
-              >
-                Projects presented with clarity and purpose.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--text-light)]">
-                A selection of product and engineering work that reflects my approach to quality,
-                reliability, and professional execution.
-              </p>
-            </div>
+          <div className="mt-5">
+            <h2
+              className="text-4xl font-extrabold leading-[1.08] tracking-tight text-[var(--text)] sm:text-5xl lg:text-[3.6rem]"
+              style={{ fontFamily: "var(--heading-font)" }}
+            >
+              Projects presented with clarity and purpose.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--text-light)]">
+              A selection of product and engineering work that reflects my approach to quality,
+              reliability, and professional execution.
+            </p>
           </div>
         </motion.div>
 
