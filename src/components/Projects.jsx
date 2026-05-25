@@ -285,16 +285,16 @@ function ProjectCard({ project, onOpen }) {
         </h3>
       </div>
 
-      <div className="flex flex-1 flex-col p-5">
+      <div className="p-5">
         {/* <p className="text-sm leading-7 text-[var(--text-light)]">{project.description}</p> */}
 
-        {/* <div className="mt-5 flex flex-wrap gap-2">
+        {/* <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <TechPill key={tag} tag={tag} size={12} />
           ))}
         </div> */}
 
-        <div className="mt-6 flex items-center justify-between gap-3 border-t border-[var(--border)] pt-5">
+        <div className="mt-4 flex items-center justify-between gap-3">
           <button
             onClick={() => onOpen(project)}
             className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)] hover:text-[var(--primary)]"
