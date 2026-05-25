@@ -57,7 +57,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-sm text-[var(--text-light)] hover:text-[var(--primary)]"
               >
                 <Mail size={14} className="text-[var(--primary)]" />
-                teliharshal40@g
+                teliharshal40@gmail.com
               </a>
             </div>
           </div>

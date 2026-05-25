@@ -257,11 +257,11 @@ function ProjectCard({ project, onOpen }) {
       className="group flex h-full flex-col rounded-[1.8rem] border border-[var(--border)] bg-[rgba(16,23,42,0.72)] shadow-[0_12px_34px_rgba(0,0,0,0.18)]"
     >
       {project.image && (
-        <div className="overflow-hidden rounded-t-[1.8rem]">
+        <div className="overflow-hidden rounded-t-[1.8rem] bg-[var(--bg)]">
           <img
             src={project.image}
             alt={project.title}
-            className="h-44 w-full object-cover object-top"
+            className="w-full object-contain"
           />
         </div>
       )}
