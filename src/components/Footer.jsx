@@ -12,9 +12,9 @@ const navLinks = [
 ];
 
 const socials = [
-  { icon: FaGithub, href: "#", label: "GitHub" },
-  { icon: FaLinkedinIn, href: "#", label: "LinkedIn" },
-  { icon: FaTwitter, href: "#", label: "Twitter" },
+  { icon: FaGithub, href: "https://github.com/teliharshal", label: "GitHub" },
+  { icon: FaLinkedinIn, href: "https://www.linkedin.com/in/harshal-teli/", label: "LinkedIn" },
+  { icon: FaTwitter, href: "https://x.com/Teli_Harshal_", label: "Twitter" },
 ];
 
 export default function Footer() {
@@ -57,7 +57,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-sm text-[var(--text-light)] hover:text-[var(--primary)]"
               >
                 <Mail size={14} className="text-[var(--primary)]" />
-                harshal@email.com
+                teliharshal40@g
               </a>
             </div>
           </div>

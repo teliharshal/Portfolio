@@ -65,7 +65,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-x-hidden px-5 pb-8 pt-20 sm:px-8 lg:px-12 lg:pt-24"
+      className="relative flex min-h-screen items-center overflow-x-hidden px-5 pb-4 pt-20 sm:px-8 lg:px-12 lg:pt-24"
     >
       <div className="absolute left-0 top-16 h-80 w-80 rounded-full bg-[rgba(199,168,106,0.10)] blur-[140px]" />
       <div className="absolute right-0 top-28 h-72 w-72 rounded-full bg-[rgba(142,163,199,0.10)] blur-[140px]" />
