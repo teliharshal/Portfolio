@@ -10,7 +10,7 @@ import project4 from "../assets/Projects/project_4.png";
 import project5 from "../assets/Projects/project_5.png";
 import project6 from "../assets/Projects/project_6.png";
 import project7 from "../assets/Projects/project_7.png";
-import project8 from "../assets/Projects/Project_8.png";
+import project8 from "../assets/Projects/project_8.png";
 import project9 from "../assets/Projects/project_9.png";
 
 const projects = [
