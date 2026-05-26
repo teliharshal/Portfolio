@@ -125,7 +125,9 @@ function Hero() {
               <ArrowRight size={16} />
             </a>
             <a
-              href="#contact"
+              href="/Harshal_Teli_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] px-6 py-3 text-sm font-semibold text-[var(--text)] transition-all duration-200 hover:border-[rgba(199,168,106,0.32)] hover:bg-[var(--accent)]"
             >
               <Download size={16} />

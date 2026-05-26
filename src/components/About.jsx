@@ -48,16 +48,22 @@ const About = () => {
             viewport={{ once: true }}
           >
             <div className="rounded-[2rem] border border-[var(--border)] bg-[rgba(16,23,42,0.74)] p-6 shadow-[0_22px_60px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:p-8 lg:p-9">
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[rgba(199,168,106,0.22)] bg-[var(--accent)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[var(--primary)]">
-                <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-60" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]" />
+                </span>
                 About Me
               </div>
 
               <h2
-                className="max-w-3xl text-3xl font-extrabold leading-[1.12] tracking-tight text-[var(--text)] sm:text-4xl lg:text-[3.1rem]"
+                className="max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] leading-[1.1] tracking-tight"
                 style={{ fontFamily: "var(--heading-font)" }}
               >
-                Professional, focused, and committed to building products that last.
+                Professional, focused, and committed to building{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
+                  products that last.
+                </span>
               </h2>
 
               <p className="mt-5 max-w-2xl text-[15px] leading-8 text-[var(--text-light)] sm:text-base">

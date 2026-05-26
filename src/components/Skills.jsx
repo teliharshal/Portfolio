@@ -74,24 +74,28 @@ export default function Skills() {
           viewport={{ once: true }}
           className="mb-10"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(199,168,106,0.22)] bg-[var(--accent)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[var(--primary)]">
-            <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
-            Technical Expertise
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]" />
+            </span>
+            Skills
           </div>
 
-          <div className="mt-5 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2
-                className="text-4xl font-extrabold leading-[1.08] tracking-tight text-[var(--text)] sm:text-5xl lg:text-[3.6rem]"
-                style={{ fontFamily: "var(--heading-font)" }}
-              >
-                Tools and technologies I use with confidence.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--text-light)]">
-                A practical stack centered on strong engineering fundamentals, maintainable delivery,
-                and professional product execution.
-              </p>
-            </div>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] leading-[1.1] tracking-tight"
+              style={{ fontFamily: "var(--heading-font)" }}
+            >
+              Tech{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
+                Stack
+              </span>
+            </h2>
+            <p className="text-sm text-[var(--text-light)] max-w-xs leading-relaxed sm:text-right">
+              A practical stack centered on strong engineering fundamentals, maintainable delivery,
+              and professional product execution.
+            </p>
           </div>
         </motion.div>
 

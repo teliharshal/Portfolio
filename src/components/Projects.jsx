@@ -266,7 +266,7 @@ function ProjectCard({ project, onOpen }) {
         </div>
       )}
 
-      <div className={`border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.10),rgba(255,255,255,0.02))] p-5 ${project.image ? "" : "rounded-t-[1.8rem]"}`}>
+      <div className={`flex flex-col flex-1 border-b border-[var(--border)] bg-[linear-gradient(135deg,rgba(199,168,106,0.10),rgba(255,255,255,0.02))] p-5 sm:p-6 ${project.image ? "" : "rounded-t-[1.8rem]"}`}>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-extrabold tracking-tight text-[var(--primary)]"
             style={{ fontFamily: "var(--heading-font)" }}>
@@ -279,38 +279,17 @@ function ProjectCard({ project, onOpen }) {
         <p className="mt-3 text-[11px] uppercase tracking-[0.22em] text-[var(--primary)]">
           {project.tagline}
         </p>
-        <h3 className="mt-1.5 text-xl font-extrabold leading-tight tracking-tight text-[var(--text)]"
-          style={{ fontFamily: "var(--heading-font)" }}>
-          {project.title}
-        </h3>
-      </div>
-
-      <div className="p-5">
-        {/* <p className="text-sm leading-7 text-[var(--text-light)]">{project.description}</p> */}
-
-        {/* <div className="mt-4 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <TechPill key={tag} tag={tag} size={12} />
-          ))}
-        </div> */}
-
-        <div className="mt-4 flex items-center justify-between gap-3">
+        <div className="mt-2 flex items-start justify-between gap-4">
+          <h3 className="text-xl font-extrabold leading-tight tracking-tight text-[var(--text)]"
+            style={{ fontFamily: "var(--heading-font)" }}>
+            {project.title}
+          </h3>
           <button
             onClick={() => onOpen(project)}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)] hover:text-[var(--primary)]"
+            className="mt-1 shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--text-light)] hover:text-[var(--primary)] transition-colors"
           >
             View details <ArrowUpRight size={16} />
           </button>
-          <div className="flex gap-2">
-            <a href={project.github} target="_blank" rel="noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]">
-              <FaGithub size={14} />
-            </a>
-            <a href={project.live} target="_blank" rel="noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border)] bg-[rgba(255,255,255,0.03)] text-[var(--text-light)] hover:border-[rgba(199,168,106,0.3)] hover:text-[var(--primary)]">
-              <ExternalLink size={14} />
-            </a>
-          </div>
         </div>
       </div>
     </motion.div>
@@ -337,18 +316,25 @@ export default function Projects() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(199,168,106,0.22)] bg-[var(--accent)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[var(--primary)]">
-            <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
-            Selected Work
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]" />
+            </span>
+            Portfolio
           </div>
-          <div className="mt-5">
+
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
             <h2
-              className="text-4xl font-extrabold leading-[1.08] tracking-tight text-[var(--text)] sm:text-5xl lg:text-[3.6rem]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] leading-[1.1] tracking-tight"
               style={{ fontFamily: "var(--heading-font)" }}
             >
-              Projects presented with clarity and purpose.
+              My{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
+                Projects
+              </span>
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--text-light)]">
+            <p className="text-sm text-[var(--text-light)] max-w-xs leading-relaxed sm:text-right">
               A selection of product and engineering work that reflects my approach to quality,
               reliability, and professional execution.
             </p>

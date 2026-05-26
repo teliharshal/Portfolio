@@ -16,12 +16,28 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0);
+
+      // Determine active section based on scroll position
+      let current = "";
+      for (const item of navItems) {
+        const sectionId = item.href.substring(1);
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // Adjust threshold based on your typical navbar height
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            current = sectionId;
+          }
+        }
+      }
+      if (current) setActiveSection(current);
     };
 
     handleScroll();
@@ -84,16 +100,24 @@ function Navbar() {
                 : "rounded-full border border-transparent bg-transparent p-1"
             }`}
           >
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a
-                  href={item.href}
-                  className="block rounded-full px-4 py-2 text-sm font-medium text-[var(--text-light)] transition duration-300 hover:bg-[var(--accent)] hover:text-[var(--text)]"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.substring(1);
+              return (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    onClick={() => setActiveSection(item.href.substring(1))}
+                    className={`block rounded-full px-4 py-2 text-sm font-medium transition duration-300 hover:bg-[var(--accent)] hover:text-[var(--text)] ${
+                      isActive 
+                        ? "bg-[var(--accent)] text-[var(--primary)] shadow-sm"
+                        : "text-[var(--text-light)]"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

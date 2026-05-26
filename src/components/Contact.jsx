@@ -85,21 +85,29 @@ export default function Contact() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(199,168,106,0.22)] bg-[var(--accent)] px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.26em] text-[var(--primary)]">
-            <span className="h-2 w-2 rounded-full bg-[var(--primary)]" />
-            Get In Touch
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)] text-[var(--primary)] text-[11px] font-bold uppercase tracking-widest mb-4 border border-[var(--primary)]/20">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-60" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--primary)]" />
+            </span>
+            Contact
           </div>
 
-          <h2
-            className="mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight text-[var(--text)] sm:text-5xl lg:text-[3.6rem]"
-            style={{ fontFamily: "var(--heading-font)" }}
-          >
-            Let&apos;s build something great together.
-          </h2>
-          <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--text-light)]">
-            I am open to full-time roles, internships, and freelance projects.
-            Reach out through any of the channels below.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[var(--text)] leading-[1.1] tracking-tight"
+              style={{ fontFamily: "var(--heading-font)" }}
+            >
+              Let&apos;s{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)]">
+                Connect
+              </span>
+            </h2>
+            <p className="text-sm text-[var(--text-light)] max-w-xs leading-relaxed sm:text-right">
+              I am open to full-time roles, internships, and freelance projects.
+              Reach out through any of the channels below.
+            </p>
+          </div>
         </motion.div>
 
         {/* Link cards grid */}
