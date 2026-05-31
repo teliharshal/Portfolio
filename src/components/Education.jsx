@@ -11,7 +11,7 @@ const education = [
     board: "Savitribai Phule Pune University",
     location: "Nashik, Maharashtra",
     year: "2021 – 2025",
-    grade: "8.5",
+    grade: "7.9",
     gradeLabel: "CGPA",
     status: "Completed",
     icon: GraduationCap,
