@@ -3,16 +3,16 @@ import { Mail, MapPin } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 
 const links = [
-  {
-    icon: FaGithub,
-    label: "GitHub",
-    value: "github.com/teliharshal",
-    href: "https://github.com/teliharshal",
-    desc: "Browse my open-source work and repositories",
-    color: "#9f8cc7",
-    bg: "rgba(159,140,199,0.10)",
-    border: "rgba(159,140,199,0.22)",
-  },
+  // {
+  //   icon: FaGithub,
+  //   label: "GitHub",
+  //   value: "github.com/teliharshal",
+  //   href: "https://github.com/teliharshal",
+  //   desc: "Browse my open-source work and repositories",
+  //   color: "#9f8cc7",
+  //   bg: "rgba(159,140,199,0.10)",
+  //   border: "rgba(159,140,199,0.22)",
+  // },
   {
     icon: FaLinkedinIn,
     label: "LinkedIn",
@@ -43,16 +43,16 @@ const links = [
     bg: "rgba(199,168,106,0.10)",
     border: "rgba(199,168,106,0.28)",
   },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "India — Remote",
-    href: null,
-    desc: "Available for remote and on-site collaboration",
-    color: "#8ea3c7",
-    bg: "rgba(142,163,199,0.10)",
-    border: "rgba(142,163,199,0.22)",
-  },
+  // {
+  //   icon: MapPin,
+  //   label: "Location",
+  //   value: "India — Remote",
+  //   href: null,
+  //   desc: "Available for remote and on-site collaboration",
+  //   color: "#8ea3c7",
+  //   bg: "rgba(142,163,199,0.10)",
+  //   border: "rgba(142,163,199,0.22)",
+  // },
 ];
 
 const container = {

@@ -30,22 +30,22 @@ const projects = [
     image: project1,
     images: [project1, project2, project3],
   },
-  {
-    id: 2,
-    number: "02",
-    title: "Yuva-Mitra - NGO Community Platform",
-    tagline: "Ngo Plateform",
-    description:
-      "NGO Connect is a responsive web platform that connects volunteers, communities, and social initiatives through an intuitive digital experience. It delivers seamless accessibility and consistent performance across desktop, tablet, and mobile devices.",
-    longDescription:
-      "NGO Connect is a modern web platform designed to bridge the gap between volunteers, communities, and social causes. The application provides an engaging and user-friendly interface for discovering and participating in social initiatives while ensuring accessibility across multiple devices. Optimized for performance and responsiveness, it delivers a smooth and consistent experience on desktop, tablet, and mobile platforms.",
-    tags: ["React","Tailwind CSS","Framer Motion"],
-    year: "2026",
-    live: "https://yuva-public.vercel.app/",
-    github: "https://github.com/intern-ApplauseITSolutions/yuva--public",
-    image: [project4],
-    images: [project4 ,project5 , project6],
-  },
+  // {
+  //   id: 2,
+  //   number: "02",
+  //   title: "Yuva-Mitra - NGO Community Platform",
+  //   tagline: "Ngo Plateform",
+  //   description:
+  //     "NGO Connect is a responsive web platform that connects volunteers, communities, and social initiatives through an intuitive digital experience. It delivers seamless accessibility and consistent performance across desktop, tablet, and mobile devices.",
+  //   longDescription:
+  //     "NGO Connect is a modern web platform designed to bridge the gap between volunteers, communities, and social causes. The application provides an engaging and user-friendly interface for discovering and participating in social initiatives while ensuring accessibility across multiple devices. Optimized for performance and responsiveness, it delivers a smooth and consistent experience on desktop, tablet, and mobile platforms.",
+  //   tags: ["React","Tailwind CSS","Framer Motion"],
+  //   year: "2026",
+  //   live: "https://yuva-public.vercel.app/",
+  //   github: "https://github.com/intern-ApplauseITSolutions/yuva--public",
+  //   image: [project4],
+  //   images: [project4 ,project5 , project6],
+  // },
   {
     id: 3,
     number: "03",
@@ -56,7 +56,7 @@ const projects = [
     longDescription:
       "Personal Portfolio Website is a fully responsive web application designed to present projects, technical expertise, certifications, and development experience in a professional manner. The platform incorporates smooth animations, intuitive navigation, and dark/light mode support to improve usability and visual appeal. Optimized for all devices, it delivers a seamless and interactive browsing experience.",
     tags: ["React", "Tailwind CSS", "Framer Motion"],
-    year: "2023",
+    year: "2026",
     live: "https://harshateli.netlify.app/",
     github: "https://github.com/teliharshal/Portfolio",
     image: project7,

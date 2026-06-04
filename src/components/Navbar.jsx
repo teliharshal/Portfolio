@@ -10,7 +10,7 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const whatsappLink = "https://wa.me/919000000000?text=Hello%20Harshal";
+const whatsappLink = "https://wa.me/9764466224?text=Hello%20Harshal";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
