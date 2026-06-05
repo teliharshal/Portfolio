@@ -10,7 +10,7 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const whatsappLink = "https://wa.me/9764466224?text=Hello%20Harshal";
+const whatsappLink = "mailto:teliharshal40@gmail.com";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -124,8 +124,6 @@ function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           <a
             href={whatsappLink}
-            target="_blank"
-            rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-[rgba(199,168,106,0.35)] bg-[var(--primary)] px-5 py-3 text-sm font-semibold text-[#0b1020] shadow-[0_10px_30px_rgba(199,168,106,0.18)] hover:-translate-y-0.5 hover:bg-[var(--primary-hover)]"
           >
             Hire Me
