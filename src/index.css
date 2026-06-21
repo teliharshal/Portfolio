@@ -56,6 +56,11 @@ select {
   -ms-overflow-style: none;
 }
 
+main {
+  overflow-x: hidden;
+}
+
+
 @media (pointer: fine) {
   *,
   *::before,

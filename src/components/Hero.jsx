@@ -102,7 +102,7 @@ function Hero() {
           {/* Name with typewriter */}
           <motion.h1
             variants={fadeUp}
-            className="w-full text-5xl font-extrabold italic leading-tight tracking-tight  bg-clip-text bg-gradient-to-r text-[var(--text)] sm:text-6xl lg:text-7xl xl:text-8xl"
+            className="w-full text-5xl font-extrabold italic leading-tight tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] via-[#dcc08d] to-[var(--secondary)] sm:text-6xl lg:text-7xl xl:text-8xl"
             style={{ fontFamily: "var(--heading-font)" }}
           >
             {name}

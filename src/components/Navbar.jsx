@@ -167,8 +167,6 @@ function Navbar() {
 
             <a
               href={whatsappLink}
-              target="_blank"
-              rel="noreferrer"
               onClick={() => setMenuOpen(false)}
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--primary)] px-5 py-3.5 text-sm font-semibold text-[#0b1020]"
             >

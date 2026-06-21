@@ -128,7 +128,7 @@ export default function Skills() {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
+            className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6"
           >
             {filtered.map((skill) => {
               const Icon = skill.icon;

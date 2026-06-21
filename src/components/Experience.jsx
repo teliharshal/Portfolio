@@ -227,7 +227,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative py-8 px-5 sm:px-8 sm:py-20 lg:px-12 overflow-hidden bg-[var(--bg)]"
+      className="relative py-16 px-5 sm:px-8 sm:py-20 lg:px-12 overflow-hidden bg-[var(--bg)]"
       style={{ fontFamily: "var(--body-font)" }}
     >
       {/* Background blobs */}
@@ -269,7 +269,7 @@ export default function Experience() {
         </motion.div>
 
         {/* ── Two-column layout ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 lg:gap-12 items-start">
 
           {/* Left — accordion cards with timeline */}
           <div className="relative lg:pl-6 flex flex-col gap-5">

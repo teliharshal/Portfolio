@@ -137,7 +137,7 @@ function ProjectModal({ project, onClose }) {
         <div
           onClick={(e) => e.stopPropagation()}
           className="relative flex w-full max-w-[1200px] flex-col sm:flex-row overflow-hidden rounded-[2rem] bg-[var(--surface)] border border-[var(--border)] shadow-2xl pointer-events-auto"
-          style={{ minHeight: "500px", maxHeight: "85vh" }}
+          style={{ minHeight: "420px", maxHeight: "90vh" }}
         >
           {/* Close Button - Desktop (Absolute Top Right) */}
           <button

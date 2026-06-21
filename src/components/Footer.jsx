@@ -34,7 +34,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid gap-10 py-10 md:grid-cols-[1.1fr_0.8fr_0.8fr_0.9fr]"
+          className="grid gap-8 py-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.1fr_0.8fr_0.8fr_0.9fr]"
         >
           <div className="max-w-sm">
             <h3
